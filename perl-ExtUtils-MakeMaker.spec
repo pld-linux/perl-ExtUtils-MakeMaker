@@ -9,7 +9,7 @@ Summary:	ExtUtils::MakeMaker - create a module Makefile
 Summary(pl):	ExtUtils::MakeMaker - tworzenie Makefile dla modu³u
 Name:		perl-ExtUtils-MakeMaker
 Version:	6.21
-Release:	3
+Release:	4
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -47,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# get rid of pod docuemntation
+rm -f $RPM_BUILD_ROOT%{perl_vendorlib}/ExtUtils/MakeMaker/*.pod
 
 %clean
 rm -rf $RPM_BUILD_ROOT
