@@ -9,12 +9,13 @@ Summary:	ExtUtils::MakeMaker - create a module Makefile
 Summary(pl):	ExtUtils::MakeMaker - tworzenie Makefile dla modu³u
 Name:		perl-ExtUtils-MakeMaker
 Version:	6.21
-Release:	2
+Release:	3
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	551c73ed52a36a93af8c305c71a554e5
+Patch0:		%{name}-pm_to_blib_before_PERLRUNINST.patch
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
@@ -32,6 +33,7 @@ stworzonym przez Andy'ego Dougherty'ego i grupê perl5-porters.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch0 -p0
 
 %build
 %{__perl} Makefile.PL \
