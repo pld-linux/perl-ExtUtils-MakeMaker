@@ -3,8 +3,8 @@
 %bcond_without	tests	# do not perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	ExtUtils
-%define	pnam	MakeMaker
+%define		pdir	ExtUtils
+%define		pnam	MakeMaker
 Summary:	ExtUtils::MakeMaker - create a module Makefile
 Summary(pl):	ExtUtils::MakeMaker - tworzenie Makefile dla modu³u
 Name:		perl-ExtUtils-MakeMaker
