@@ -15,6 +15,7 @@ License:	GPL or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	983378d9e9a3ea73178ec3443f626048
+Patch0:		%{name}-perl580man.patch
 BuildRequires:	perl-devel >= 5.6
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildArch:	noarch
@@ -32,6 +33,7 @@ stworzonym przez Andy'ego Dougherty'ego i grupê perl5-porters.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch0 -p0
 
 %build
 %{__perl} Makefile.PL \
