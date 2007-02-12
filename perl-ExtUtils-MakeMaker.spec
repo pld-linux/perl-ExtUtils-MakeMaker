@@ -6,7 +6,7 @@
 %define		pdir	ExtUtils
 %define		pnam	MakeMaker
 Summary:	ExtUtils::MakeMaker - create a module Makefile
-Summary(pl):	ExtUtils::MakeMaker - tworzenie Makefile dla modu³u
+Summary(pl.UTF-8):   ExtUtils::MakeMaker - tworzenie Makefile dla moduÅ‚u
 Name:		perl-ExtUtils-MakeMaker
 Version:	6.30
 Release:	2
@@ -27,10 +27,10 @@ This utility is designed to write a Makefile for an extension module
 from a Makefile.PL. It is based on the Makefile.SH model provided by
 Andy Dougherty and the perl5-porters.
 
-%description -l pl
-To narzêdzie zosta³o zaprojektowane, aby tworzyæ pliki Makefile dla
-modu³u rozszerzenia z Makefile.PL. Jest oparte na modelu Makefile.SH
-stworzonym przez Andy'ego Dougherty'ego i grupê perl5-porters.
+%description -l pl.UTF-8
+To narzÄ™dzie zostaÅ‚o zaprojektowane, aby tworzyÄ‡ pliki Makefile dla
+moduÅ‚u rozszerzenia z Makefile.PL. Jest oparte na modelu Makefile.SH
+stworzonym przez Andy'ego Dougherty'ego i grupÄ™ perl5-porters.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
