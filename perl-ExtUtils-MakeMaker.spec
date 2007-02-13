@@ -6,7 +6,7 @@
 %define		pdir	ExtUtils
 %define		pnam	MakeMaker
 Summary:	ExtUtils::MakeMaker - create a module Makefile
-Summary(pl.UTF-8):   ExtUtils::MakeMaker - tworzenie Makefile dla modułu
+Summary(pl.UTF-8):	ExtUtils::MakeMaker - tworzenie Makefile dla modułu
 Name:		perl-ExtUtils-MakeMaker
 Version:	6.30
 Release:	2
