@@ -1,21 +1,20 @@
-diff -Nur ExtUtils-MakeMaker-6.30.orig/lib/ExtUtils/Install.pm ExtUtils-MakeMaker-6.30.write-permissions/lib/ExtUtils/Install.pm
---- ExtUtils-MakeMaker-6.30.orig/lib/ExtUtils/Install.pm	2005-03-22 04:30:24.000000000 +0000
-+++ ExtUtils-MakeMaker-6.30.write-permissions/lib/ExtUtils/Install.pm	2006-10-30 16:14:28.000000000 +0000
-@@ -180,7 +180,7 @@
- 		print "Installing $targetfile\n";
+--- ExtUtils-MakeMaker-6.32/inc/ExtUtils/Install.pm~	2007-05-08 18:19:32.000000000 +0200
++++ ExtUtils-MakeMaker-6.32/inc/ExtUtils/Install.pm	2007-05-08 18:22:09.376990824 +0200
+@@ -652,7 +652,7 @@
  		utime($atime,$mtime + $Is_VMS,$targetfile) unless $nonono>1;
- 		print "utime($atime,$mtime,$targetfile)\n" if $verbose>1;
--		$mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
-+		$mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
- 		chmod $mode, $targetfile;
- 		print "chmod($mode, $targetfile)\n" if $verbose>1;
- 	    } else {
-@@ -451,7 +451,7 @@
+ 
+ 
+-                $mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
++                $mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
+                 $mode = $mode | 0222
+                     if $realtarget ne $targetfile;
+                 _chmod( $mode, $targetfile, $verbose );
+@@ -1013,7 +1013,7 @@
  	}
  	my($mode,$atime,$mtime) = (stat $from)[2,8,9];
  	utime($atime,$mtime+$Is_VMS,$to);
--	chmod(0444 | ( $mode & 0111 ? 0111 : 0 ),$to);
-+	chmod(0644 | ( $mode & 0111 ? 0111 : 0 ),$to);
+-	_chmod(0444 | ( $mode & 0111 ? 0111 : 0 ),$to);
++	_chmod(0644 | ( $mode & 0111 ? 0111 : 0 ),$to);
  	next unless $from =~ /\.pm$/;
  	_autosplit($to,$autodir);
      }
