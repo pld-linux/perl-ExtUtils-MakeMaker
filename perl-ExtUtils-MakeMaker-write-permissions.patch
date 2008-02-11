@@ -1,20 +1,20 @@
---- ExtUtils-MakeMaker-6.32/inc/ExtUtils/Install.pm~	2007-05-08 18:19:32.000000000 +0200
-+++ ExtUtils-MakeMaker-6.32/inc/ExtUtils/Install.pm	2007-05-08 18:22:09.376990824 +0200
-@@ -652,7 +652,7 @@
- 		utime($atime,$mtime + $Is_VMS,$targetfile) unless $nonono>1;
+--- ExtUtils-MakeMaker-6.42/inc/ExtUtils/Install.pm.orig	2007-11-17 04:52:56.000000000 +0000
++++ ExtUtils-MakeMaker-6.42/inc/ExtUtils/Install.pm	2008-02-11 22:33:25.966893319 +0000
+@@ -666,7 +666,7 @@
+             utime($atime,$mtime + $Is_VMS,$targetfile) unless $nonono>1;
  
  
--                $mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
-+                $mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
-                 $mode = $mode | 0222
-                     if $realtarget ne $targetfile;
-                 _chmod( $mode, $targetfile, $verbose );
-@@ -1013,7 +1013,7 @@
- 	}
- 	my($mode,$atime,$mtime) = (stat $from)[2,8,9];
- 	utime($atime,$mtime+$Is_VMS,$to);
--	_chmod(0444 | ( $mode & 0111 ? 0111 : 0 ),$to);
-+	_chmod(0644 | ( $mode & 0111 ? 0111 : 0 ),$to);
- 	next unless $from =~ /\.pm$/;
- 	_autosplit($to,$autodir);
+-            $mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
++            $mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
+             $mode = $mode | 0222
+                 if $realtarget ne $targetfile;
+             _chmod( $mode, $targetfile, $verbose );
+@@ -1018,7 +1018,7 @@
+         }
+         my($mode,$atime,$mtime) = (stat $from)[2,8,9];
+         utime($atime,$mtime+$Is_VMS,$to);
+-        _chmod(0444 | ( $mode & 0111 ? 0111 : 0 ),$to);
++        _chmod(0644 | ( $mode & 0111 ? 0111 : 0 ),$to);
+         next unless $from =~ /\.pm$/;
+         _autosplit($to,$autodir);
      }
