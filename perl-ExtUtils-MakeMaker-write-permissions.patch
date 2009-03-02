@@ -1,15 +1,15 @@
---- ExtUtils-MakeMaker-6.42/inc/ExtUtils/Install.pm.orig	2007-11-17 04:52:56.000000000 +0000
-+++ ExtUtils-MakeMaker-6.42/inc/ExtUtils/Install.pm	2008-02-11 22:33:25.966893319 +0000
-@@ -666,7 +666,7 @@
-             utime($atime,$mtime + $Is_VMS,$targetfile) unless $nonono>1;
- 
- 
--            $mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
-+            $mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
-             $mode = $mode | 0222
-                 if $realtarget ne $targetfile;
-             _chmod( $mode, $targetfile, $verbose );
-@@ -1018,7 +1018,7 @@
+--- ExtUtils-MakeMaker-6.48/inc/ExtUtils/Install.pm.orig	2008-10-10 04:28:25.000000000 +0200
++++ ExtUtils-MakeMaker-6.48/inc/ExtUtils/Install.pm	2009-03-02 14:51:47.297088533 +0100
+@@ -780,7 +780,7 @@
+                 utime($atime,$mtime + $Is_VMS,$targetfile) unless $dry_run>1;
+     
+     
+-                $mode = 0444 | ( $mode & 0111 ? 0111 : 0 );
++                $mode = 0644 | ( $mode & 0111 ? 0111 : 0 );
+                 $mode = $mode | 0222
+                     if $realtarget ne $targetfile;
+                 _chmod( $mode, $targetfile, $verbose );
+@@ -1174,7 +1174,7 @@
          }
          my($mode,$atime,$mtime) = (stat $from)[2,8,9];
          utime($atime,$mtime+$Is_VMS,$to);
