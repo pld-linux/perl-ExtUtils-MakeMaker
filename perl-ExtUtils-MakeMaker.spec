@@ -8,14 +8,13 @@
 Summary:	ExtUtils::MakeMaker - create a module Makefile
 Summary(pl.UTF-8):	ExtUtils::MakeMaker - tworzenie Makefile dla modułu
 Name:		perl-ExtUtils-MakeMaker
-Version:	6.52
+Version:	6.54
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-# Source0:	http://www.cpan.org/modules/by-module/ExtUtils/%{pdir}-%{pnam}-%{version}.tar.gz
-Source0:	http://www.pobox.com/~schwern/src/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	4fe422ca6c19016324b2c50af489ba17
+Source0:	http://www.cpan.org/modules/by-module/ExtUtils/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	003c04b33e8c8eed693f5001fe52b647
 Patch0:		%{name}-write-permissions.patch
 URL:		http://search.cpan.org/dist/ExtUtils-MakeMaker/
 BuildRequires:	perl-devel >= 1:5.8.0
