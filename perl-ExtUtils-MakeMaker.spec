@@ -8,17 +8,21 @@
 Summary:	ExtUtils::MakeMaker - create a module Makefile
 Summary(pl.UTF-8):	ExtUtils::MakeMaker - tworzenie Makefile dla modułu
 Name:		perl-ExtUtils-MakeMaker
-Version:	6.54
+Version:	6.56
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/ExtUtils/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	003c04b33e8c8eed693f5001fe52b647
+Source0:	http://www.cpan.org/modules/by-module/ExtUtils/MSCHWERN/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	af7e032a1e845e4decf7672929510b98
 Patch0:		%{name}-write-permissions.patch
 URL:		http://search.cpan.org/dist/ExtUtils-MakeMaker/
+BuildRequires:	perl(File::Spec) >= 0.80
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+%if %{with tests}
+BuildRequires:	perl-Test-Harness >= 2.00
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,6 +40,8 @@ stworzonym przez Andy'ego Dougherty'ego i grupę perl5-porters.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 %patch0 -p1
 
+find inc -name '*.orig' | xargs -r %{__rm}
+
 %build
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
@@ -50,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # get rid of pod docuemntation
-rm -f $RPM_BUILD_ROOT%{perl_vendorlib}/ExtUtils/MakeMaker/*.pod
+%{__rm} $RPM_BUILD_ROOT%{perl_vendorlib}/ExtUtils/MakeMaker/*.pod
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,7 +64,24 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes NOTES PATCHING README TODO
-%attr(755,root,root) %{_bindir}/*
-%{perl_vendorlib}/%{pdir}/*
-%{_mandir}/man3/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/instmodsh
+%{perl_vendorlib}/ExtUtils/Command
+%{perl_vendorlib}/ExtUtils/Liblist.pm
+%{perl_vendorlib}/ExtUtils/Liblist
+%{perl_vendorlib}/ExtUtils/MM.pm
+%{perl_vendorlib}/ExtUtils/MM_*.pm
+%{perl_vendorlib}/ExtUtils/MY.pm
+%{perl_vendorlib}/ExtUtils/MakeMaker.pm
+%{perl_vendorlib}/ExtUtils/MakeMaker
+%{perl_vendorlib}/ExtUtils/Mkbootstrap.pm
+%{perl_vendorlib}/ExtUtils/Mksymlists.pm
+%{perl_vendorlib}/ExtUtils/testlib.pm
+%{_mandir}/man1/instmodsh.1p*
+%{_mandir}/man3/ExtUtils::Command::*.3pm*
+%{_mandir}/man3/ExtUtils::Liblist.3pm*
+%{_mandir}/man3/ExtUtils::MM*.3pm*
+%{_mandir}/man3/ExtUtils::MY.3pm*
+%{_mandir}/man3/ExtUtils::MakeMaker*.3pm*
+%{_mandir}/man3/ExtUtils::Mkbootstrap.3pm*
+%{_mandir}/man3/ExtUtils::Mksymlists.3pm*
+%{_mandir}/man3/ExtUtils::testlib.3pm*
