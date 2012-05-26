@@ -1,5 +1,5 @@
---- ExtUtils-MakeMaker-6.48/inc/ExtUtils/Install.pm.orig	2008-10-10 04:28:25.000000000 +0200
-+++ ExtUtils-MakeMaker-6.48/inc/ExtUtils/Install.pm	2009-03-02 14:51:47.297088533 +0100
+--- ExtUtils-MakeMaker-6.62/bundled/ExtUtils-Install/ExtUtils/Install.pm.orig	2008-10-10 04:28:25.000000000 +0200
++++ ExtUtils-MakeMaker-6.62/bundled/ExtUtils-Install/ExtUtils/Install.pm	2009-03-02 14:51:47.297088533 +0100
 @@ -780,7 +780,7 @@
                  utime($atime,$mtime + $Is_VMS,$targetfile) unless $dry_run>1;
      

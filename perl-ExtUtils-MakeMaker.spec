@@ -8,18 +8,32 @@
 Summary:	ExtUtils::MakeMaker - create a module Makefile
 Summary(pl.UTF-8):	ExtUtils::MakeMaker - tworzenie Makefile dla modułu
 Name:		perl-ExtUtils-MakeMaker
-Version:	6.56
+Version:	6.62
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/ExtUtils/MSCHWERN/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	af7e032a1e845e4decf7672929510b98
+Source0:	http://www.cpan.org/modules/by-module/ExtUtils/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	2ae291030c52999b5672b2a502eab195
 Patch0:		%{name}-write-permissions.patch
 URL:		http://search.cpan.org/dist/ExtUtils-MakeMaker/
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.50
 BuildRequires:	perl(File::Spec) >= 0.80
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+# the following are needed to avoid installation of bundled modules
+BuildRequires:	perl-CPAN-Meta >= 2.112150
+BuildRequires:	perl-CPAN-Meta-YAML >= 0.003
+BuildRequires:	perl-ExtUtils-Command >= 1.16
+BuildRequires:	perl-ExtUtils-Install >= 1.52
+BuildRequires:	perl-ExtUtils-Manifest >= 1.58
+BuildRequires:	perl-File-Copy-Recursive >= 0.38
+BuildRequires:	perl-File-Temp >= 0.22
+BuildRequires:	perl-JSON-PP >= 2.27104
+BuildRequires:	perl-Parse-CPAN-Meta >= 1.4401
+BuildRequires:	perl-Scalar-List-Utils >= 1.23
+BuildRequires:	perl-Version-Requirements >= 0.101020
+BuildRequires:	perl-version >= 0.88
 %if %{with tests}
 BuildRequires:	perl-Test-Harness >= 2.00
 %endif
@@ -41,6 +55,9 @@ stworzonym przez Andy'ego Dougherty'ego i grupę perl5-porters.
 %patch0 -p1
 
 find inc -name '*.orig' | xargs -r %{__rm}
+
+# perl >= 5.8 is assumed, so this module is useless
+%{__rm} -r bundled/JSON-PP-Compat5006
 
 %build
 %{__perl} Makefile.PL \
