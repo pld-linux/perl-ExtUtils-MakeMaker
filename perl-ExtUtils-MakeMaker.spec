@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_with	tests	# do not perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define		pdir	ExtUtils
 %define		pnam	MakeMaker
 Summary:	ExtUtils::MakeMaker - create a module Makefile
