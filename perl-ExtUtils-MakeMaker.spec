@@ -51,7 +51,7 @@ stworzonym przez Andy'ego Dougherty'ego i grupę perl5-porters.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 find inc -name '*.orig' | xargs -r %{__rm}
 
